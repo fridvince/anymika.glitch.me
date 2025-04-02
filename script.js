@@ -9,26 +9,27 @@ document.addEventListener("DOMContentLoaded", () => {
     "TIDY",
     "涼しい",
     "ʕ•ᴥ•ʔ",
-    "hyvä"
+    "HYVÄ",
+    "UwU"
   ];
 
   let currentWordIndex = 0;
 
   // Function to create letter elements
   function createTitleElements(word, callback) {
-    dynamicTitle.innerHTML = ""; // Clear previous text
+    const dynamicTitle = document.querySelector(".dynamic-title");
+    dynamicTitle.innerHTML = "";
 
     word.split("").forEach((char, index) => {
       const span = document.createElement("span");
       span.classList.add("letter");
-      span.textContent = " "; // Start with empty space
-      span.style.opacity = "0"; // Make letters invisible initially
+      span.textContent = " ";
+      span.style.opacity = "0";
       dynamicTitle.appendChild(span);
 
-      // Delay each letter's appearance with fade-in
       setTimeout(() => {
         span.textContent = char;
-        span.style.opacity = "1"; // Make it fade in
+        span.style.opacity = "1";
       }, index * 150);
     });
 
@@ -46,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   cycleWords();
 
-  // Smooth Scroll Function
+
   function scrollToPage(pageNumber) {
     document.getElementById("page" + pageNumber).scrollIntoView({ behavior: "smooth" });
   }
