@@ -93,17 +93,21 @@ document.querySelectorAll('.grid-item img').forEach(img => {
   img.addEventListener('contextmenu', (e) => {
     e.preventDefault(); // Disable right-click
   });
-
-  // Disable touch hold for mobile (to prevent long press save)
+// Disable touch hold for mobile (to prevent long press save)
   img.addEventListener('touchstart', (e) => {
     e.preventDefault(); // Prevent the long press
   });
 });
 
-document.querySelector('.close-button').addEventListener('click', () => {
+// Both click and touch events compatibility
+const closeButton = document.querySelector('.close-button');
+closeButton.addEventListener('click', closePopup);
+closeButton.addEventListener('touchstart', closePopup);
+
+function closePopup() {
     console.log('Close button clicked');
     const popupContainer = document.querySelector('.popup-content');
     if (popupContainer) {
-        popupContainer.style.display = 'none';
+        popupContainer.remove();
     }
-});
+}
