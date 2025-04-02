@@ -99,3 +99,11 @@ document.querySelectorAll('.grid-item img').forEach(img => {
     e.preventDefault(); // Prevent the long press
   });
 });
+
+document.querySelector('.close-button').addEventListener('click', () => {
+    console.log('Close button clicked');
+    const popupContainer = document.querySelector('.popup-content');
+    if (popupContainer) {
+        popupContainer.style.display = 'none';
+    }
+});

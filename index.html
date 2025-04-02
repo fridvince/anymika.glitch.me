@@ -223,6 +223,23 @@
               allow="autoplay; clipboard-black; encrypted-media; fullscreen; picture-in-picture" 
               loading="lazy"></iframe>
     </div>
-
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelector('.close-button').addEventListener('click', () => {
+            console.log('Close button clicked');
+            const popupContainer = document.querySelector('.popup-content');
+            if (popupContainer) {
+                popupContainer.remove(); // Remove the popup container
+            }
+        });
+      });
+    </script>
+    
+    <div class="popup-content">
+      <div class="fade"></div>
+      <div class="pattern"></div>
+      <button class="close-button"></button>
+    </div>
   </body>
 </html>
