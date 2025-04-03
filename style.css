@@ -369,20 +369,28 @@ body {
 
 #heartCounter {
     position: fixed;
-    top: 20px;
-    left: 20px;
-    padding: 20px;
-    font-size: 24px;
+    top: -16px;
+    left: 0;
+    font-size: 30px;
     display: flex;
+    z-index: 999;
 }
 
 #heartIcon {
-    width: 30px;
-    margin-right: 10px;
+    width: 100px;
+    height: 100px;
 }
 
 #heartCount {
-    color: #ff1569;
+    position: fixed;
+    top: 12px;
+    left: 80px;
+    color: #FFFFFF;
+    text-shadow: 
+        2px 2px 0 black,
+        -2px -2px 0 black,
+        2px -2px 0 black,
+        -2px 2px 0 black;
 }
 /* CUTE TOUCH */
 

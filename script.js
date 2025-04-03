@@ -120,18 +120,42 @@ document.querySelectorAll(".grid-item img").forEach((img) => {
 let heartCount = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
+    console.log("DOM fully loaded and parsed");
     initializeLeeks();
-    updateHeartCounter();
+    updateHeartCounter();  // Ensure heart counter starts at 0
 });
 
-// Updates heart count display
+// Updates the heart counter display and manages opacity
 function updateHeartCounter() {
-    document.getElementById('heartCount').textContent = heartCount;
+    const heartCountDisplay = document.getElementById('heartCount');
+    const heartCounter = document.getElementById('heartCounter');  // Get the heart counter container
+
+    if (heartCountDisplay) {
+        heartCountDisplay.textContent = heartCount;
+    } else {
+        console.error("Heart count element not found!");
+    }
+
+    // Update the opacity of the heart counter based on heart count
+    if (heartCounter) {
+        if (heartCount > 0) {
+            heartCounter.style.opacity = 1;  // Fully visible
+        } else {
+            heartCounter.style.opacity = 0;  // Invisible until there's at least one heart
+        }
+    } else {
+        console.error("Heart counter container not found!");
+    }
 }
 
-// Creates a heart at a given position
+// Creates a heart at the given position
 function createHeartAtPosition(x, y) {
     const explosionContainer = document.getElementById('heartExplosion');
+    
+    if (!explosionContainer) {
+        console.error("Heart explosion container not found!");
+        return;
+    }
 
     const heart = document.createElement('div');
     heart.classList.add('heart');
@@ -144,8 +168,11 @@ function createHeartAtPosition(x, y) {
 
     setTimeout(() => heart.remove(), 2000);
 
+    // Update heart count **AFTER** appending the heart
     heartCount++;
-    updateHeartCounter();
+    console.log("Heart count before update:", heartCount);
+    updateHeartCounter();  // Update the counter and opacity
+    console.log("Heart count after update:", heartCount);
 }
 
 // Initializes flying leeks
