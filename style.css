@@ -316,6 +316,59 @@ iframe {
   transform: translateY(0) scale(1.1);
 }
 
+/* CUTE TOUCH */
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+.flying-leek {
+    position: fixed;
+    top: -200px;
+    width: 160px;
+    height: 160px;
+    background-size: cover;
+    animation: fly-leek 4s ease-in-out infinite;
+    z-index: 999;
+}
+
+@keyframes fly-leek {
+    from {
+        top: -200px;
+    }
+    to {
+        top: 100vh;
+    }
+}
+
+/* Hearts animation */
+.heart {
+    position: absolute;
+    transform: translate(-30%, -30%);
+    width: 200px;
+    height: 200px;
+    background-image: url(
+      'https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/heart.svg?v=1743703623784'
+    );
+    background-size: cover;
+    opacity: 1;
+    z-index: 999;
+    animation: heartFadeOut 2s forwards;
+}
+
+@keyframes heartFadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+/* CUTE TOUCH */
+
+/* POPUP CONTENT*/
 .popup-content {
   display: block !important;
   position: fixed;
