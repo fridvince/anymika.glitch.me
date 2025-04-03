@@ -1,10 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Gasoek+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gasoek+One&display=swap");
 
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
-  font-family: 'Dela Gothic One', 'Gasoek One', sans-serif;
+  font-family: "Dela Gothic One", "Gasoek One", sans-serif;
   overflow-x: hidden;
 }
 
@@ -23,19 +24,19 @@ body, html {
 }
 
 .nav-buttons button {
-  font-family: 'YOUR_ENGLISH_FONT_NAME', sans-serif;
+  font-family: "YOUR_ENGLISH_FONT_NAME", sans-serif;
   background: transparent;
   border: none;
   padding: 10px 15px;
   cursor: pointer;
   font-size: 1rem;
-  color: #FF1569;
+  color: #ff1569;
   border-radius: 5px;
   transition: color 0.3s;
 }
 
 .nav-buttons button:hover {
-  color: #FF87CB;
+  color: #ff87cb;
 }
 
 .landing {
@@ -54,12 +55,12 @@ body, html {
 }
 
 .page-1 {
-  background-color: #FBFBF2;
+  background-color: #fbfbf2;
   position: relative;
 }
 
 .page-2 {
-  background-color: #28262C;
+  background-color: #28262c;
   position: relative;
 }
 
@@ -126,7 +127,7 @@ body, html {
   height: calc (100% - 300);
   position: absolute;
   font-size: clamp(120px, 8vw, 100px);
-  color: #FF1569;
+  color: #ff1569;
   text-align: center;
   pointer-events: none;
 }
@@ -189,8 +190,7 @@ iframe {
 }
 
 .grid-item {
-  background-color: #171614;
-  color: #FFFFFF;
+  all: unset;
   display: flex;
   border-radius: 15px;
   justify-content: center;
@@ -198,39 +198,44 @@ iframe {
   height: 200px;
   overflow: hidden;
   position: relative;
-}  
+  cursor: pointer;
+}
 
-.grid-item img {
+.grid-item:active {
+  transform: scale(0.98);
+}
+
+.grid-item > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.2s ease;
   will-change: transform;
 }
-  
-.grid-item:hover img {
+
+.grid-item:hover > img {
   transform: scale(1.1);
 }
 
-.icons {
+.item-icons {
   position: absolute;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  gap: 8px;
+  gap: 4px;
   padding: 8px;
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-.icon {
+.item-icon {
   background: #000000;
-  border-radius: 15px;
+  border-radius: 8px;
 }
 
-.grid-item:hover .icons {
+.grid-item:hover .item-icons {
   opacity: 1;
 }
 
@@ -243,7 +248,7 @@ iframe {
     height: 80px;
   }
 
-  .icons {
+  .item-icons {
     display: flex;
     flex-wrap: column;
     justify-content: center;
@@ -252,51 +257,111 @@ iframe {
   }
 }
 
+.floating-buttons {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  z-index: 1000;
+}
+
+.floating-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  border-radius: 16%;
+  padding: 8px;
+  transition: transform 0.2s ease-out;
+  animation: floatAnim 3s ease-in-out infinite alternate;
+  width: 40px;
+  height: 40px;
+}
+
+.floating-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Floating effect */
+@keyframes floatAnim {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(var(--float-distance, 5px));
+  }
+}
+
+@media (max-width: 768px) {
+  .floating-buttons {
+    bottom: 100px;
+  }
+  .floating-button {
+    border-radius: 16%;
+    padding: 4px;
+  }
+  .floating-button img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* Stop floating on hover */
+.floating-button:hover {
+  animation: none !important;
+  transform: translateY(0) scale(1.1);
+}
+
 .popup-content {
-    display: block !important;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 20;
+  display: block !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 20;
 }
 
 .fade {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 20;
-    pointer-events: all;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 20;
+  pointer-events: all;
 }
 
 .pattern {
-    position: absolute;
-    top: -100px;
-    left: 0;
-    width: 100%;
-    height: calc(100% + 200px);
-    background: repeating-linear-gradient(
-        116deg,
-        transparent,
-        transparent 4px,
-        rgba(255, 255, 255, 0.1) 4px,
-        rgba(255, 255, 255, 0.1) 8px
-    );
-    z-index: 22;
-    pointer-events: none;
+  position: absolute;
+  top: -100px;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 200px);
+  background: repeating-linear-gradient(
+    116deg,
+    transparent,
+    transparent 4px,
+    rgba(255, 255, 255, 0.1) 4px,
+    rgba(255, 255, 255, 0.1) 8px
+  );
+  z-index: 22;
+  pointer-events: none;
 }
 
 .close-button {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0);
-    z-index: 30;
-    cursor: pointer;
+  all: unset;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0);
+  z-index: 30;
+  cursor: pointer;
 }
