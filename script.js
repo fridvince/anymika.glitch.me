@@ -117,68 +117,83 @@ document.querySelectorAll(".grid-item img").forEach((img) => {
 });
 
 // CUTE TOUCH
+let heartCount = 0;
+
+document.addEventListener('DOMContentLoaded', () => {
+    initializeLeeks();
+    updateHeartCounter();
+});
+
+// Updates heart count display
+function updateHeartCounter() {
+    document.getElementById('heartCount').textContent = heartCount;
+}
+
+// Creates a heart at a given position
 function createHeartAtPosition(x, y) {
     const explosionContainer = document.getElementById('heartExplosion');
-    
+
     const heart = document.createElement('div');
     heart.classList.add('heart');
-    heart.style.left = `${x - 50}px`;
-    heart.style.top = `${y - 50}px`;
+    
+    heart.style.position = 'absolute';
+    heart.style.left = `${x}px`;
+    heart.style.top = `${y + window.scrollY}px`;
 
     explosionContainer.appendChild(heart);
 
-    
-    setTimeout(() => {
-        heart.style.display = 'none';
-    }, 2000);
+    setTimeout(() => heart.remove(), 2000);
+
+    heartCount++;
+    updateHeartCounter();
 }
 
-// Function to create flying leeks with random positions and animations
-function createFlyingLeeks() {
+// Initializes flying leeks
+function initializeLeeks() {
     const leekContainer = document.getElementById('leekContainer');
     const maxLeeks = 4;
-
     const leekImages = [
-      'https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/leek1.svg?v=1743703441842',
-      'https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/leek2.svg?v=1743703444770'
+        'https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/leek1.svg?v=1743703441842',
+        'https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/leek2.svg?v=1743703444770'
     ];
 
-    setInterval(() => {
-        if (leekContainer.children.length < maxLeeks) {
-            const leek = document.createElement('div');
-            leek.classList.add('flying-leek');
+    function createFlyingLeek() {
+        if (leekContainer.children.length >= maxLeeks) return;
 
-            const randomLeekImage = leekImages[Math.floor(Math.random() * leekImages.length)];
-            leek.style.backgroundImage = `url('${randomLeekImage}')`;
+        const leek = document.createElement('div');
+        leek.classList.add('flying-leek');
+        leek.style.backgroundImage = `url('${getRandomLeek()}')`;
+        leek.style.left = `${getRandomX()}px`;
 
-            const randomX = Math.random() * (window.innerWidth - 200);
-            leek.style.left = `${randomX}px`;
+        leekContainer.appendChild(leek);
 
-            leekContainer.appendChild(leek);
+        // Remove leek after a random time (4-6s)
+        setTimeout(() => leek.remove(), getRandomTime(10000, 12000));
+    }
 
-            setTimeout(() => {
-                leek.remove();
-            }, Math.random() * (6000 - 4000) + 4000);
-        }
-    }, Math.random() * (3000 - 2000) + 2000);
+    function getRandomLeek() {
+        return leekImages[Math.floor(Math.random() * leekImages.length)];
+    }
 
-    // Attach click event for leek explosion
-    leekContainer.addEventListener('click', function(event) {
-        if (event.target.classList.contains('flying-leek')) {
-            const leekPosition = event.target.getBoundingClientRect();
-            const leekCenterX = leekPosition.left + leekPosition.width / 2;
-            const leekCenterY = leekPosition.top + leekPosition.height / 2;
+    function getRandomX() {
+        return Math.random() * (window.innerWidth - 200);
+    }
 
-            createHeartAtPosition(leekCenterX, leekCenterY);
+    function getRandomTime(min, max) {
+        return Math.random() * (max - min) + min;
+    }
 
-            event.target.style.display = 'none';
-        }
+    setInterval(createFlyingLeek, getRandomTime(2000, 3000));
+
+    // Click event to explode leek into a heart
+    leekContainer.addEventListener('click', (event) => {
+        if (!event.target.classList.contains('flying-leek')) return;
+
+        const { left, top, width, height } = event.target.getBoundingClientRect();
+        createHeartAtPosition(left + width / 2, top + height / 2);
+        event.target.remove();
     });
 }
-
-document.addEventListener('DOMContentLoaded', function () {
-    createFlyingLeeks();
-});
 // CUTE TOUCH
 
 // Both click and touch events compatibility

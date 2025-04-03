@@ -346,7 +346,7 @@ body {
 /* Hearts animation */
 .heart {
     position: absolute;
-    transform: translate(-30%, -30%);
+    transform: translate(-50%, -50%);
     width: 200px;
     height: 200px;
     background-image: url(
@@ -365,6 +365,24 @@ body {
     100% {
         opacity: 0;
     }
+}
+
+#heartCounter {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 20px;
+    font-size: 24px;
+    display: flex;
+}
+
+#heartIcon {
+    width: 30px;
+    margin-right: 10px;
+}
+
+#heartCount {
+    color: #ff1569;
 }
 /* CUTE TOUCH */
 
