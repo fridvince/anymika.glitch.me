@@ -19,7 +19,7 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10;
+  z-index: 100;
   gap: 15px;
 }
 
@@ -27,11 +27,10 @@ html {
   font-family: "YOUR_ENGLISH_FONT_NAME", sans-serif;
   background: transparent;
   border: none;
-  padding: 10px 15px;
+  gap: 30px;
   cursor: pointer;
   font-size: 1rem;
   color: #ff1569;
-  border-radius: 5px;
   transition: color 0.3s;
 }
 
@@ -268,25 +267,19 @@ iframe {
 }
 
 .floating-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   background: #000000;
   border-radius: 16%;
   padding: 8px;
-  transition: transform 0.2s ease-out;
-  animation: floatAnim 3s ease-in-out infinite alternate;
+  animation: floatAnim 2s ease-in-out infinite alternate;
   width: 40px;
   height: 40px;
 }
 
-.floating-button img {
+.floating-button > img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
 }
 
-/* Floating effect */
 @keyframes floatAnim {
   0% {
     transform: translateY(0px);
@@ -294,6 +287,10 @@ iframe {
   100% {
     transform: translateY(var(--float-distance, 5px));
   }
+}
+
+.floating-button:hover {
+  animation: none !important;
 }
 
 @media (max-width: 768px) {
@@ -310,12 +307,6 @@ iframe {
   }
 }
 
-/* Stop floating on hover */
-.floating-button:hover {
-  animation: none !important;
-  transform: translateY(0) scale(1.1);
-}
-
 /* CUTE TOUCH */
 body {
     margin: 0;
@@ -325,13 +316,14 @@ body {
 }
 
 .flying-leek {
-    position: fixed;
-    top: -200px;
-    width: 160px;
-    height: 160px;
-    background-size: cover;
-    animation: fly-leek 4s ease-in-out infinite;
-    z-index: 999;
+  position: fixed;
+  top: 0px;
+  bottom: -200px;
+  width: 160px;
+  height: 160px;
+  background-size: cover;
+  animation: fly-leek 4s ease-in-out infinite;
+  z-index: 80;
 }
 
 @keyframes fly-leek {
@@ -343,7 +335,6 @@ body {
     }
 }
 
-/* Hearts animation */
 .heart {
     position: absolute;
     transform: translate(-50%, -50%);
@@ -354,8 +345,9 @@ body {
     );
     background-size: cover;
     opacity: 1;
-    z-index: 999;
+    z-index: 1200;
     animation: heartFadeOut 2s forwards;
+    pointer-events: none;
 }
 
 @keyframes heartFadeOut {
@@ -392,11 +384,25 @@ body {
         2px -2px 0 black,
         -2px 2px 0 black;
 }
-/* CUTE TOUCH */
+
+@media (max-width: 768px) {
+  #heartCounter {
+    top: 62px;
+    font-size: 20px;
+  }
+  #heartIcon {
+    width: 66px;
+    height: 66px;
+  }
+  #heartCount {
+    top: 80px;
+    left: 56px;
+  }
+}
 
 /* POPUP CONTENT*/
-.popup-content {
-  display: block !important;
+.popup-container {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -413,7 +419,6 @@ body {
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
   z-index: 20;
-  pointer-events: all;
 }
 
 .pattern {
@@ -431,16 +436,20 @@ body {
   );
   z-index: 22;
   pointer-events: none;
+  
 }
 
-.close-button {
-  all: unset;
+.popup-content {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: black;
+  padding: 60px;
+  border-radius: 16px;
   z-index: 30;
-  cursor: pointer;
+}
+
+.content-container {
+  margin-bottom: 20px;
 }
