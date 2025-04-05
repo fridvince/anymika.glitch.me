@@ -209,11 +209,25 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "ITEM 0",
       text: "Website is under developing state",
       imageUrl: "https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/cover8.jpg?v=1743530797746",
+      videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     },
     {
       title: "ITEM 1",
       text: "Website is under developing state",
       imageUrl: "https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/cover8.jpg?v=1743530797746",
+      videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    },
+    {
+      title: "ITEM 2",
+      text: "Website is under developing state",
+      imageUrl: "https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/cover8.jpg?v=1743530797746",
+      videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    },
+    {
+      title: "ITEM 3",
+      text: "Website is under developing state",
+      imageUrl: "https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/cover8.jpg?v=1743530797746",
+      videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     },
     {
       title: "ITEM 4",
@@ -241,18 +255,6 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       title: "ITEM 8",
-      text: "Website is under developing state",
-      imageUrl: "https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/cover8.jpg?v=1743530797746",
-      videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    },
-    {
-      title: "ITEM 9",
-      text: "Website is under developing state",
-      imageUrl: "https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/cover8.jpg?v=1743530797746",
-      videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    },
-    {
-      title: "ITEM 9",
       text: "Website is under developing state",
       imageUrl: "https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/cover8.jpg?v=1743530797746",
       videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
