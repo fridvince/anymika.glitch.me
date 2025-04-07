@@ -491,11 +491,6 @@ iframe {
   height: auto;
 }
 
-.popup-content img {
-  position: relative;
-  width: 100%;
-}
-
 .popup-title {
   font-size: 1.6rem;
   max-height: 20px;
@@ -507,6 +502,11 @@ iframe {
   font-size: 1.0rem;
   margin-top: 10px;
   color: white;
+}
+
+.popup-dynamic-image {
+  border-radius: 8px;
+  object-fit: cover;
 }
 
 .popup-content iframe {

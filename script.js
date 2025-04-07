@@ -230,68 +230,63 @@ elements.forEach((el) => {
   const contentData = [
     {
       title: "JAM. C# >> PRODUCTION",
-      text: "my precious - animations annd sequences with no animations",
-      imageUrl:
-        "https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/cover9-head.jpg?v=1743898715272",
-      videoUrl: "https://youtu.be/NT3s8JKfDjs?feature=shared",
+      txtUrl: "item.1.prototype.txt",
     },
     {
       title: "JAM. DISTORTION",
-      text: "so basically the distortion pack is essence of this visual design research, i finally understood that distortion is not that hard",
-      imageUrl:
-        "https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/cover8-head.jpg?v=1743898731991",
-      videoUrl: "https://youtu.be/NT3s8JKfDjs?feature=shared",
+      txtUrl: "item.2.distortion.txt",
     },
     {
       title: "JAM. VEHICLES",
-      text: "more experiments, i and unity becoming united :3",
-      imageUrl:
-        "https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/cover7-head.jpg?v=1743898681089",
-      videoUrl: "https://youtu.be/NT3s8JKfDjs?feature=shared",
+      txtUrl: "item.3.customs.txt",
     },
     {
       title: "JAM. AFTER THU",
-      text: "a lot of water has flowed after my first THU challenge (link to artwork), but the idea of JAMS has hooked in my mind",
-      imageUrl:
-        "https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/cover6-head.jpg?v=1743898727568",
-      videoUrl: "https://youtu.be/NT3s8JKfDjs?feature=shared",
+      txtUrl: "item.4.sequences.txt",
     },
     {
       title: "3D LEVEL: HELP",
-      text: "and back 3d, how it can be useful to have diversity of skills and versatile legacy",
-      imageUrl:
-        "https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/cover5-head.jpg?v=1743898698842",
-      videoUrl: "https://youtu.be/NT3s8JKfDjs?feature=shared",
+      txtUrl: "item.5.again.txt",
     },
     {
       title: "SPINE 2D CHALLENGES",
-      text: "animation is always a part of me and everything i do",
-      imageUrl:
-        "https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/cover4-head.jpg?v=1743898674222",
-      videoUrl: "https://youtu.be/NT3s8JKfDjs?feature=shared",
+      txtUrl: "item.6.spine.txt",
     },
     {
       title: "3D JOURNEY",
-      text: "so yeah go back before i dove deeper to ui ux",
-      imageUrl:
-        "https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/cover3-head.jpg?v=1743898685560",
-      videoUrl: "https://youtu.be/NT3s8JKfDjs?feature=shared",
+      txtUrl: "item.7.beginning.txt",
     },
     {
       title: "DISTORTION PACK",
-      text: "experiments with shader. me and tech art",
-      imageUrl:
-        "https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/cover2-head.jpg?v=1743898694904",
-      videoUrl: "https://youtu.be/NT3s8JKfDjs?feature=shared",
+      txtUrl: "item.8.assets1.txt",
     },
     {
       title: "C# ANIMATION PACK",
-      text: "i wanna explain here of how i have came to it and why its so many of them and to grab it",
-      imageUrl:
-        "https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/cover1-head.jpg?v=1743898690085",
-      videoUrl: "https://youtu.be/NT3s8JKfDjs?feature=shared",
+      txtUrl: "item.9.assets2.txt",
     },
-    // WIP...
+    
+    async function loadPopupContent(txtUrl) {
+    const response = await fetch(txtUrl);
+    const text = await response.text();
+
+    const popupText = document.querySelector(".popup-text");
+    popupText.innerHTML = "";
+
+    const lines = text.split(/\n\n+/);
+    lines.forEach(block => {
+    if (block.startsWith("[text]")) {
+      const p = document.createElement("p");
+      p.textContent = block.replace("[text]", "").trim();
+      popupText.appendChild(p);
+    } else if (block.startsWith("[image]")) {
+      const img = document.createElement("img");
+      img.src = block.replace("[image]", "").trim();
+      img.alt = "image";
+      img.classList.add("popup-dynamic-image");
+      popupText.appendChild(img);
+      }
+    });
+  }
   ];
 
   // POPUP PERFORMANCE
@@ -311,15 +306,6 @@ elements.forEach((el) => {
           popupImage.style.display = "none";
         }
 
-        if (popupVideo && itemData.videoUrl) {
-          popupVideo.src = `https://www.youtube.com/embed/${extractYouTubeId(
-            itemData.videoUrl
-          )}`;
-          popupVideo.style.display = "block";
-        } else if (popupVideo) {
-          popupVideo.style.display = "none";
-        }
-
         popupContainer.style.display = "block";
         fade.style.display = "block";
         document.body.classList.add("no-scroll");
@@ -334,14 +320,6 @@ elements.forEach((el) => {
       document.body.classList.remove("no-scroll");
       unlockScroll();
     });
-  }
-
-  // YOUTUBE ID EXTRACTOR
-  function extractYouTubeId(url) {
-    const regex =
-      /(?:youtube\.com\/(?:[^\/]+\/.*\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
-    const match = url.match(regex);
-    return match ? match[1] : "";
   }
 
   // SOCIAL BUTTONS
