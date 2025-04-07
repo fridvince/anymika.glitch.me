@@ -208,15 +208,26 @@ elements.forEach((el) => {
   initializeLeeks();
   updateHeartCounter();
 
-  // POPUP TEMPLATE
+    // 1. POPUP CONTENT DATA
   const popupContainer = document.querySelector(".popup-container");
-  const popupTitle = document.querySelector(".popup-title");
-  const popupText = document.querySelector(".popup-text");
-  const popupImage = document.querySelector(".popup-content img");
-  const popupVideo = document.querySelector(".popup-content iframe");
-  const fade = document.querySelector(".fade");
-
-  function lockScroll() {
+const popupTitle = document.querySelector(".popup-title");
+const popupText = document.querySelector(".popup-text");
+const popupImage = document.querySelector(".popup-content img");
+const popupVideo = document.querySelector(".popup-content iframe");
+const fade = document.querySelector(".fade");
+const contentData = [
+  { title: "JAM. C# >> PRODUCTION", txtUrl: "item.1.prototype.txt" },
+  { title: "JAM. DISTORTION", txtUrl: "item.2.distortion.txt" },
+  { title: "JAM. VEHICLES", txtUrl: "item.3.customs.txt" },
+  { title: "JAM. AFTER THU", txtUrl: "item.4.sequences.txt" },
+  { title: "3D LEVEL: HELP", txtUrl: "item.5.again.txt" },
+  { title: "SPINE 2D CHALLENGES", txtUrl: "item.6.spine.txt" },
+  { title: "3D JOURNEY", txtUrl: "item.7.beginning.txt" },
+  { title: "DISTORTION PACK", txtUrl: "item.8.assets1.txt" },
+  { title: "C# ANIMATION PACK", txtUrl: "item.9.assets2.txt" },
+];
+  
+    function lockScroll() {
     document.body.style.overflow = "hidden";
     document.documentElement.style.overflow = "hidden";
   }
@@ -226,54 +237,16 @@ elements.forEach((el) => {
     document.documentElement.style.overflow = "";
   }
 
-  // POPUP CONTENT DATA
-  const contentData = [
-    {
-      title: "JAM. C# >> PRODUCTION",
-      txtUrl: "item.1.prototype.txt",
-    },
-    {
-      title: "JAM. DISTORTION",
-      txtUrl: "item.2.distortion.txt",
-    },
-    {
-      title: "JAM. VEHICLES",
-      txtUrl: "item.3.customs.txt",
-    },
-    {
-      title: "JAM. AFTER THU",
-      txtUrl: "item.4.sequences.txt",
-    },
-    {
-      title: "3D LEVEL: HELP",
-      txtUrl: "item.5.again.txt",
-    },
-    {
-      title: "SPINE 2D CHALLENGES",
-      txtUrl: "item.6.spine.txt",
-    },
-    {
-      title: "3D JOURNEY",
-      txtUrl: "item.7.beginning.txt",
-    },
-    {
-      title: "DISTORTION PACK",
-      txtUrl: "item.8.assets1.txt",
-    },
-    {
-      title: "C# ANIMATION PACK",
-      txtUrl: "item.9.assets2.txt",
-    },
-    
-    async function loadPopupContent(txtUrl) {
-    const response = await fetch(txtUrl);
-    const text = await response.text();
+// 2. FUNCTION TO LOAD CONTENT FROM TXT FILE
+async function loadPopupContent(txtUrl) {
+  const response = await fetch(txtUrl);
+  const text = await response.text();
 
-    const popupText = document.querySelector(".popup-text");
-    popupText.innerHTML = "";
+  const popupText = document.querySelector(".popup-text");
+  popupText.innerHTML = ""; // Clear previous content
 
-    const lines = text.split(/\n\n+/);
-    lines.forEach(block => {
+  const lines = text.split(/\n\n+/); // Split by double newlines
+  lines.forEach(block => {
     if (block.startsWith("[text]")) {
       const p = document.createElement("p");
       p.textContent = block.replace("[text]", "").trim();
@@ -284,42 +257,34 @@ elements.forEach((el) => {
       img.alt = "image";
       img.classList.add("popup-dynamic-image");
       popupText.appendChild(img);
-      }
+    }
+  });
+}
+
+// 3. POPUP PERFORMANCE
+if (popupContainer && popupTitle && popupText && fade) {
+  document.querySelectorAll(".grid-item").forEach((button, index) => {
+    button.addEventListener("click", () => {
+      const itemData = contentData[index];
+      if (!itemData) return;
+
+      popupTitle.textContent = itemData.title;
+      loadPopupContent(itemData.txtUrl); // <-- here’s the magic
+
+      popupContainer.style.display = "block";
+      fade.style.display = "block";
+      document.body.classList.add("no-scroll");
+      lockScroll();
     });
-  }
-  ];
+  });
 
-  // POPUP PERFORMANCE
-  if (popupContainer && popupTitle && popupText && fade) {
-    document.querySelectorAll(".grid-item").forEach((button, index) => {
-      button.addEventListener("click", () => {
-        const itemData = contentData[index];
-        if (!itemData) return;
-
-        popupTitle.textContent = itemData.title;
-        popupText.textContent = itemData.text;
-
-        if (popupImage && itemData.imageUrl) {
-          popupImage.src = itemData.imageUrl;
-          popupImage.style.display = "block";
-        } else if (popupImage) {
-          popupImage.style.display = "none";
-        }
-
-        popupContainer.style.display = "block";
-        fade.style.display = "block";
-        document.body.classList.add("no-scroll");
-        lockScroll();
-      });
-    });
-
-    fade.addEventListener("click", () => {
-      popupContainer.style.display = "none";
-      fade.style.display = "none";
-      if (popupVideo) popupVideo.src = "";
-      document.body.classList.remove("no-scroll");
-      unlockScroll();
-    });
+  fade.addEventListener("click", () => {
+    popupContainer.style.display = "none";
+    fade.style.display = "none";
+    if (popupVideo) popupVideo.src = "";
+    document.body.classList.remove("no-scroll");
+    unlockScroll();
+  });
   }
 
   // SOCIAL BUTTONS

@@ -104,7 +104,7 @@ body, html {
   transition: opacity 0.3s ease-in-out;
 }
 
-  @media (max-width: 980px) and (min-width: 769px) {
+@media (max-width: 980px) and (min-width: 769px) {
   .page-1-grid {
     grid-template-columns: repeat(5, 1fr);
   }
@@ -210,10 +210,13 @@ iframe {
 .content-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   gap: 4px;
-  width: calc(100% - 16px);
-  margin-top: 0;
+  width: 100%;
+  height: 100%;
   padding: 8px;
+  box-sizing: border-box;
+  padding-top: 100px;
 }
 
 .grid-item {
@@ -222,10 +225,9 @@ iframe {
   border-radius: 15px;
   justify-content: center;
   align-items: center;
-  height: 200px;
   overflow: hidden;
-  position: relative;
   cursor: pointer;
+  height: 100%;
 }
 
 .grid-item:active {
@@ -246,13 +248,14 @@ iframe {
 
 .item-icons {
   position: absolute;
+  box-sizing: border-box;
   display: grid;
+  justify-content: center;
+  align-items: center;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
   gap: 4px;
   padding: 8px;
-  width: 100px;
-  height: 100px;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -260,27 +263,36 @@ iframe {
 .item-icon {
   background: #000000;
   border-radius: 8px;
+  width: 60px;
+  height: 60px;
 }
 
 .grid-item:hover .item-icons {
   opacity: 1;
 }
 
+@media (max-width: 980px) and (min-width: 769px) {
+  .content-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
   .content-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
-
-  .grid-item {
-    height: 80px;
-  }
-
+  
   .item-icons {
-    display: flex;
-    flex-wrap: column;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
+  opacity: 1;
+  }
+  
+  .grid-item:hover > img {
+  transform: none;
+  }
+  
+  .item-icon {
+  width: 40px;
+  height: 40px;
   }
 }
 
@@ -381,29 +393,29 @@ iframe {
 }
 
 #heartCounter {
-    position: fixed;
-    top: -16px;
-    left: 0;
-    font-size: 30px;
-    display: flex;
-    z-index: 999;
+  position: fixed;
+  top: -16px;
+  left: 0;
+  font-size: 30px;
+  display: flex;
+  z-index: 200;
 }
 
 #heartIcon {
-    width: 100px;
-    height: 100px;
+  width: 100px;
+  height: 100px;
 }
 
 #heartCount {
-    position: fixed;
-    top: 12px;
-    left: 80px;
-    color: #FFFFFF;
-    text-shadow: 
-        2px 2px 0 black,
-        -2px -2px 0 black,
-        2px -2px 0 black,
-        -2px 2px 0 black;
+  position: fixed;
+  top: 12px;
+  left: 80px;
+  color: #FFFFFF;
+  text-shadow: 
+    2px 2px 0 black,
+    -2px -2px 0 black,
+    2px -2px 0 black,
+    -2px 2px 0 black;
 }
 
 @media (max-width: 768px) {
@@ -476,16 +488,15 @@ iframe {
 
 .popup-content {
   position: relative;
-  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0);
   width: 420px;
   background: black;
   border-radius: 16px;
   padding: 16px;
   padding-top: 0;
   z-index: 202;
-  margin-top: 80px;
+  margin-top: 40px;
   margin-bottom: 120px;
   pointer-events: auto;
   height: auto;
@@ -500,29 +511,29 @@ iframe {
 .popup-text {
   font-family: sans-serif;
   font-size: 1.0rem;
+  text-align: justify;
   margin-top: 10px;
   color: white;
 }
 
 .popup-dynamic-image {
+  width: 100%;
   border-radius: 8px;
   object-fit: cover;
 }
 
-.popup-content iframe {
-  width: 100%;
-  height: auto;
-  margin-top: 8px;
-}
-
 @media (max-width: 768px) {
   .popup-content {
-    width: 340px;
-    margin-top: 8px;
+    width: 320px;
+    margin-top: 30px;
     margin-bottom: 200px;
   }
   
   .popup-title {
   font-size: 1.2rem;
   }
+  
+  .popup-text {
+  margin-top: 40px;
+}
 }
