@@ -2,20 +2,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const dynamicTitle = document.getElementById("dynamicTitle");
   document.documentElement.style.overflowX = "hidden";
   document.body.style.overflowX = "hidden";
-  
-  window.addEventListener('resize', () => {
-  if (document.documentElement.scrollWidth > window.innerWidth) {
-    console.log('Content is overflowing horizontally');
-  }
-});
-  
-  const elements = document.querySelectorAll('*');
 
-elements.forEach((el) => {
-  if (el.offsetWidth > window.innerWidth) {
-    el.style.overflowX = 'hidden';
-  }
-});
+  window.addEventListener("resize", () => {
+    if (document.documentElement.scrollWidth > window.innerWidth) {
+      console.log("Content is overflowing horizontally");
+    }
+  });
+
+  const elements = document.querySelectorAll("*");
+
+  elements.forEach((el) => {
+    if (el.offsetWidth > window.innerWidth) {
+      el.style.overflowX = "hidden";
+    }
+  });
 
   // HEADER
   const wordList = [
@@ -69,31 +69,19 @@ elements.forEach((el) => {
       .getElementById("page" + pageNumber)
       .scrollIntoView({ behavior: "smooth" });
   }
-
-  document
-    .querySelector(".nav-buttons button:nth-child(1)")
-    .addEventListener("click", () => {
-      scrollToPage(1);
-    });
-
-  document
-    .querySelector(".nav-buttons button:nth-child(2)")
-    .addEventListener("click", () => {
-      scrollToPage(2);
-    });
-
-  document
-    .querySelector(".nav-buttons button:nth-child(3)")
-    .addEventListener("click", () => {
-      scrollToPage(3);
-    });
+  
+    document.querySelector(".logo-button").addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+  
+    document.querySelectorAll(".center-buttons button").forEach((button, index) => {
+    button.addEventListener("click", () => scrollToPage(index + 2));
+  });
 
   const player = document.getElementById("player");
 
-
-
   function updateBounds() {
-    if (isMobile()) {
+    if ("isMobile"()) {
       player.style.width = "100%";
       player.style.left = "0px";
       player.style.bottom = "20px";
@@ -208,26 +196,26 @@ elements.forEach((el) => {
   initializeLeeks();
   updateHeartCounter();
 
-    // 1. POPUP CONTENT DATA
+  // 1. POPUP CONTENT DATA
   const popupContainer = document.querySelector(".popup-container");
-const popupTitle = document.querySelector(".popup-title");
-const popupText = document.querySelector(".popup-text");
-const popupImage = document.querySelector(".popup-content img");
-const popupVideo = document.querySelector(".popup-content iframe");
-const fade = document.querySelector(".fade");
-const contentData = [
-  { title: "JAM. C# >> PRODUCTION", txtUrl: "item.1.prototype.txt" },
-  { title: "JAM. DISTORTION", txtUrl: "item.2.distortion.txt" },
-  { title: "JAM. VEHICLES", txtUrl: "item.3.customs.txt" },
-  { title: "JAM. AFTER THU", txtUrl: "item.4.sequences.txt" },
-  { title: "3D LEVEL: HELP", txtUrl: "item.5.again.txt" },
-  { title: "SPINE 2D CHALLENGES", txtUrl: "item.6.spine.txt" },
-  { title: "3D JOURNEY", txtUrl: "item.7.beginning.txt" },
-  { title: "DISTORTION PACK", txtUrl: "item.8.assets1.txt" },
-  { title: "C# ANIMATION PACK", txtUrl: "item.9.assets2.txt" },
-];
-  
-    function lockScroll() {
+  const popupTitle = document.querySelector(".popup-title");
+  const popupText = document.querySelector(".popup-text");
+  const popupImage = document.querySelector(".popup-content img");
+  const popupVideo = document.querySelector(".popup-content iframe");
+  const fade = document.querySelector(".fade");
+  const contentData = [
+    { title: "JAM. C# >> PRODUCTION", txtUrl: "item.1.prototype.txt" },
+    { title: "JAM. DISTORTION", txtUrl: "item.2.distortion.txt" },
+    { title: "JAM. VEHICLES", txtUrl: "item.3.customs.txt" },
+    { title: "JAM. AFTER THU", txtUrl: "item.4.sequences.txt" },
+    { title: "3D LEVEL: HELP", txtUrl: "item.5.again.txt" },
+    { title: "SPINE 2D CHALLENGES", txtUrl: "item.6.spine.txt" },
+    { title: "3D JOURNEY", txtUrl: "item.7.beginning.txt" },
+    { title: "DISTORTION PACK", txtUrl: "item.8.assets1.txt" },
+    { title: "C# ANIMATION PACK", txtUrl: "item.9.assets2.txt" },
+  ];
+
+  function lockScroll() {
     document.body.style.overflow = "hidden";
     document.documentElement.style.overflow = "hidden";
   }
@@ -237,54 +225,54 @@ const contentData = [
     document.documentElement.style.overflow = "";
   }
 
-// 2. FUNCTION TO LOAD CONTENT FROM TXT FILE
-async function loadPopupContent(txtUrl) {
-  const response = await fetch(txtUrl);
-  const text = await response.text();
+  // 2. FUNCTION TO LOAD CONTENT FROM TXT FILE
+  async function loadPopupContent(txtUrl) {
+    const response = await fetch(txtUrl);
+    const text = await response.text();
 
-  const popupText = document.querySelector(".popup-text");
-  popupText.innerHTML = ""; // Clear previous content
+    const popupText = document.querySelector(".popup-text");
+    popupText.innerHTML = ""; // Clear previous content
 
-  const lines = text.split(/\n\n+/); // Split by double newlines
-  lines.forEach(block => {
-    if (block.startsWith("[text]")) {
-      const p = document.createElement("p");
-      p.textContent = block.replace("[text]", "").trim();
-      popupText.appendChild(p);
-    } else if (block.startsWith("[image]")) {
-      const img = document.createElement("img");
-      img.src = block.replace("[image]", "").trim();
-      img.alt = "image";
-      img.classList.add("popup-dynamic-image");
-      popupText.appendChild(img);
-    }
-  });
-}
-
-// 3. POPUP PERFORMANCE
-if (popupContainer && popupTitle && popupText && fade) {
-  document.querySelectorAll(".grid-item").forEach((button, index) => {
-    button.addEventListener("click", () => {
-      const itemData = contentData[index];
-      if (!itemData) return;
-
-      popupTitle.textContent = itemData.title;
-      loadPopupContent(itemData.txtUrl); // <-- here’s the magic
-
-      popupContainer.style.display = "block";
-      fade.style.display = "block";
-      document.body.classList.add("no-scroll");
-      lockScroll();
+    const lines = text.split(/\n\n+/); // Split by double newlines
+    lines.forEach((block) => {
+      if (block.startsWith("[text]")) {
+        const p = document.createElement("p");
+        p.textContent = block.replace("[text]", "").trim();
+        popupText.appendChild(p);
+      } else if (block.startsWith("[image]")) {
+        const img = document.createElement("img");
+        img.src = block.replace("[image]", "").trim();
+        img.alt = "image";
+        img.classList.add("popup-dynamic-image");
+        popupText.appendChild(img);
+      }
     });
-  });
+  }
 
-  fade.addEventListener("click", () => {
-    popupContainer.style.display = "none";
-    fade.style.display = "none";
-    if (popupVideo) popupVideo.src = "";
-    document.body.classList.remove("no-scroll");
-    unlockScroll();
-  });
+  // 3. POPUP PERFORMANCE
+  if (popupContainer && popupTitle && popupText && fade) {
+    document.querySelectorAll(".grid-item").forEach((button, index) => {
+      button.addEventListener("click", () => {
+        const itemData = contentData[index];
+        if (!itemData) return;
+
+        popupTitle.textContent = itemData.title;
+        loadPopupContent(itemData.txtUrl); // <-- here’s the magic
+
+        popupContainer.style.display = "block";
+        fade.style.display = "block";
+        document.body.classList.add("no-scroll");
+        lockScroll();
+      });
+    });
+
+    fade.addEventListener("click", () => {
+      popupContainer.style.display = "none";
+      fade.style.display = "none";
+      if (popupVideo) popupVideo.src = "";
+      document.body.classList.remove("no-scroll");
+      unlockScroll();
+    });
   }
 
   // SOCIAL BUTTONS
@@ -310,7 +298,7 @@ if (popupContainer && popupTitle && popupText && fade) {
     void button.offsetWidth;
 
     setTimeout(() => {
-      'randomFloat'(button);
+      "randomFloat"(button);
     }, 10);
   }
 });

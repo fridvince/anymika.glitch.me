@@ -1,4 +1,5 @@
-Hello website!
-anymika.glitch.me
+# Hello website!
 
-status: writting...
+anymika :3
+
+status: writing...

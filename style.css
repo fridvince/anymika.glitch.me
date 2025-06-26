@@ -22,25 +22,63 @@ body, html {
   height: 80px;
   background-color: white;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  padding: 0 20px;
   z-index: 100;
-  gap: 15px;
 }
 
-.nav-buttons button {
+.logo-button {
+  width: 200px;
+  height: 100px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.logo-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.center-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex: 1;
+}
+
+.center-buttons button {
   font-family: "YOUR_ENGLISH_FONT_NAME", sans-serif;
   background: transparent;
   border: none;
-  gap: 30px;
   cursor: pointer;
   font-size: 1rem;
-  color: #ff1569;
+  color: black;
   transition: color 0.3s;
 }
 
-.nav-buttons button:hover {
-  color: #000000;
+.center-buttons button:hover {
+  color: #ff1569;
+}
+
+@media (max-width: 728px) {
+  .logo-button {
+    width: 100px;
+    height: 100px;
+  }
+
+  .logo-button img {
+    content: url('https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/logo-06.png?v=1746369506296');
+  }
+
+  .center-buttons button {
+    font-size: 0.8rem;
+  }
 }
 
 .landing {
@@ -65,11 +103,16 @@ body, html {
 }
 
 .page-2 {
-  background-color: #28262c;
+  background-color: #ff1569;
 
 }
 
 .page-3 {
+  background-color: #28262c;
+
+}
+
+.page-4 {
   background-color: #171614;
 
 }
@@ -395,7 +438,7 @@ iframe {
 #heartCounter {
   position: fixed;
   top: -16px;
-  left: 0;
+  right: 0;
   font-size: 30px;
   display: flex;
   z-index: 200;
@@ -409,7 +452,7 @@ iframe {
 #heartCount {
   position: fixed;
   top: 12px;
-  left: 80px;
+  right: 80px;
   color: #FFFFFF;
   text-shadow: 
     2px 2px 0 black,
@@ -420,7 +463,7 @@ iframe {
 
 @media (max-width: 768px) {
   #heartCounter {
-    top: 62px;
+    top: 4px;
     font-size: 20px;
   }
   #heartIcon {
@@ -428,8 +471,8 @@ iframe {
     height: 66px;
   }
   #heartCount {
-    top: 80px;
-    left: 56px;
+    top: 22px;
+    right: 56px;
   }
 }
 

@@ -34,9 +34,15 @@
   <body>
     <script src="script.js"></script>
     <nav class="nav-buttons">
-      <button onclick="scrollToPage(1)">ARTWORKS</button>
-      <button onclick="scrollToPage(2)">ABOUT ME</button>
-      <button onclick="scrollToPage(3)">CONTACTS</button>
+      <button class="logo-button" onclick="scrollToPage(0)">
+        <img src="https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/logo-04.png?v=1746370575917" alt="Logo" />
+      </button>
+  
+      <div class="center-buttons">
+        <button onclick="scrollToPage(1)">GAMES</button>
+        <button onclick="scrollToPage(2)">STORY</button>
+        <button onclick="scrollToPage(3)">LINKS</button>
+      </div>
     </nav>
     
     <!-- PAGES -->
@@ -193,8 +199,10 @@
           </div>
         </div>
       </section>
+      
+      <section id="page2" class="page page-2"></section>
 
-      <section id="page2" class="page page-2">
+      <section id="page3" class="page page-3">
         <div class="content-grid">
           <button class="grid-item open-popup" data-index="0">
             <img
@@ -386,7 +394,7 @@
         </div>
       </section>
 
-      <section id="page3" class="page page-3"></section>
+      <section id="page4" class="page page-4"></section>
     </div>
     
     <!-- SOCIAL -->
@@ -437,7 +445,7 @@
     <div class="player-container" id="player">
       <iframe
         src="https://open.spotify.com/embed/playlist/7H9NiVcAbEtvzQ31QP4FPT?utm_source=generator&theme=0"
-        allow="autoplay; clipboard-black; encrypted-media; fullscreen; picture-in-picture"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy"
       ></iframe>
     </div>
