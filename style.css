@@ -68,8 +68,8 @@ body, html {
 
 @media (max-width: 728px) {
   .logo-button {
-    width: 100px;
-    height: 100px;
+    width: 64px;
+    height: 64px;
   }
 
   .logo-button img {
@@ -104,11 +104,13 @@ body, html {
 
 .page-2 {
   background-color: #ff1569;
+  overflow: hidden;
 
 }
 
 .page-3 {
   background-color: #28262c;
+  overflow: hidden;
 
 }
 
@@ -217,6 +219,66 @@ body, html {
   .letter {
     min-width: 52px;
   }
+}
+
+.smashbox {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.platforms {
+  position: absolute;
+  left: 50%;
+  bottom: 100px;
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: repeat(1, 40px);
+  gap: 8px;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  z-index: 10;
+}
+
+.platform-disables {
+  position: absolute;
+  left: 50%;
+  bottom: 150px;
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: repeat(3, 40px);
+  gap: 86px;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.platforms img {
+  width: 120px;
+  height: 40px;
+  transition: transform 0.15s ease;
+}
+
+.platform-disables img {
+  width: 120px;
+  height: 40px;
+}
+
+.platforms a:hover img {
+  transform: scale(1.1);
 }
 
 .player-container {

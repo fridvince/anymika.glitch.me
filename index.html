@@ -41,7 +41,7 @@
       <div class="center-buttons">
         <button onclick="scrollToPage(1)">GAMES</button>
         <button onclick="scrollToPage(2)">STORY</button>
-        <button onclick="scrollToPage(3)">LINKS</button>
+        <button onclick="scrollToPage(3)">COLLAB</button>
       </div>
     </nav>
     
@@ -200,34 +200,82 @@
         </div>
       </section>
       
-      <section id="page2" class="page page-2"></section>
+      <section id="page2" class="page page-2">
+        <div class="smashbox">
+    
+          <!-- Splash -->
+          <div class="image-container">
+            <img
+              class="scrolling-image"
+              src="https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/AppSplash.jpg?v=1750990010080"
+              alt="smashbox"
+            />
+          </div>
+
+          <!-- Platforms -->
+          <div class="platform-container">
+            <div class="platforms">
+              <a href="https://www.artstation.com/fridvince" target="_blank" class="platform-button">
+                <img
+                  src="https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/ArtStation.png?v=1750972637264"
+                  alt="AS"
+                />
+              </a>
+            </div>
+
+            <div class="platform-disables">
+              <img src="https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/Steam.png?v=1750972633451" alt="Steam" />
+              <img src="https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/PS5.png?v=1750972639938" alt="PS5" />
+              <img src="https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/AppStore.png?v=1750972628751" alt="Apple" />
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section id="page3" class="page page-3">
         <div class="content-grid">
-          <button class="grid-item open-popup" data-index="0">
+          <button class="grid-item open-popup" data-index="1">
+            <img
+              src="https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/splash_assetCOVER.jpg?v=1750965316422"
+              alt="CROSS PLATFORM"
+            />
+            <div class="item-icons">
+              <img
+                src="https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/14.svg?v=1743616144815"
+                alt="UE"
+                class="item-icon"
+              />
+              <img
+                src="https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/13.svg?v=1743616129955"
+                alt="C#"
+                class="item-icon"
+              />
+            </div>
+          </button>
+          <button class="grid-item open-popup" data-index="2">
             <img
               src="https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/cover9.jpg?v=1743530915355"
               alt="JAM. CSHAP >> PRODUCTION"
             />
             <div class="item-icons">
               <img
+                src="https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/14.svg?v=1743616144815"
+                alt="UE"
+                class="item-icon"
+              />
+              <img
                 src="https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/13.svg?v=1743616129955"
                 alt="C#"
                 class="item-icon"
               />
               <img
-                src="https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/15.svg?v=1743617792134"
-                alt="PS"
-                class="item-icon"
-              />
-              <img
-                src="https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/17.svg?v=1743617798779"
-                alt="AE"
+                src="https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/16.svg?v=1743617795519"
+                alt="IL"
                 class="item-icon"
               />
             </div>
           </button>
-          <button class="grid-item open-popup" data-index="1">
+          <button class="grid-item open-popup" data-index="3">
             <img
               src="https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/cover8.jpg?v=1743530797746"
               alt="JAM. DISTORTION"
@@ -255,7 +303,7 @@
               />
             </div>
           </button>
-          <button class="grid-item open-popup" data-index="2">
+          <button class="grid-item open-popup" data-index="4">
             <img
               src="https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/cover7.jpg?v=1743530794036"
               alt="JAM. VEHICLES"
@@ -278,7 +326,7 @@
               />
             </div>
           </button>
-          <button class="grid-item open-popup" data-index="3">
+          <button class="grid-item open-popup" data-index="5">
             <img
               src="https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/cover6.jpg?v=1743530789784"
               alt="JAM. AFTER THU"
@@ -296,7 +344,7 @@
               />
             </div>
           </button>
-          <button class="grid-item open-popup" data-index="4">
+          <button class="grid-item open-popup" data-index="6">
             <img
               src="https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/cover5.jpg?v=1743530785227"
               alt="3D LEVEL: HELP"
@@ -314,7 +362,7 @@
               />
             </div>
           </button>
-          <button class="grid-item open-popup" data-index="5">
+          <button class="grid-item open-popup" data-index="7">
             <img
               src="https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/cover4.jpg?v=1743530912234"
               alt="SPINE 2D CHALLENGES"
@@ -332,7 +380,7 @@
               />
             </div>
           </button>
-          <button class="grid-item open-popup" data-index="6">
+          <button class="grid-item open-popup" data-index="8">
             <img
               src="https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/cover3.jpg?v=1743530771006"
               alt="3D JOURNEY"
@@ -355,7 +403,7 @@
               />
             </div>
           </button>
-          <button class="grid-item open-popup" data-index="7">
+          <button class="grid-item open-popup" data-index="9">
             <img
               src="https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/cover2.jpg?v=1743530763077"
               alt="DISTORTION PACK"
@@ -373,7 +421,7 @@
               />
             </div>
           </button>
-          <button class="grid-item open-popup" data-index="8">
+          <button class="grid-item open-popup" data-index="10">
             <img
               src="https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/cover1.jpg?v=1743530689613"
               alt="C# ANIMATION PACK"

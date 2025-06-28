@@ -204,6 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const popupVideo = document.querySelector(".popup-content iframe");
   const fade = document.querySelector(".fade");
   const contentData = [
+    { title: "CROSS PLATFORM", txtUrl: "item.0.smash.txt" },
     { title: "JAM. C# >> PRODUCTION", txtUrl: "item.1.prototype.txt" },
     { title: "JAM. DISTORTION", txtUrl: "item.2.distortion.txt" },
     { title: "JAM. VEHICLES", txtUrl: "item.3.customs.txt" },
