@@ -1,0 +1,11 @@
+[text]
+artwork descirption
+
+[image]
+https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/splash_assetCOVER.jpg?v=1750965316422
+
+[text]
+tech stuff and process, challenges
+
+[text]
+meow :3
