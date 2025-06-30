@@ -1,11 +1,12 @@
 [text]
-artwork descirption
+Alright yeah you know those moments when you see the picture right in your eyes? Then get the Figma open and just start doing that stuff done, alive. I follow a mindset when I let my ideas floating around, some ideas just come, like cause connection, abstract connection. I may do one thing and then see how to animate that, then what effect it may be, remember some reference from history, get creativity to just come and then get all things together.
 
 [image]
-https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/cover9-head.jpg?v=1743898715272
+assets/thumb/preview-roof.jpg
 
 [text]
-tech stuff and process, challenges
+Here I need to use actual Figma prototype. Let's see if I can really integrate that. My first hunch is about java script, so I will definitely populate that through the html and do my magic.
+Then I want to integrate this silly blahaj as a gITM file, so pure magic is coming, I want to bring this web portfolio shine. This is a whole my power in web design here, technical abilities and capacity to represent that all in one playful place ;D
 
 [text]
 meow :3
