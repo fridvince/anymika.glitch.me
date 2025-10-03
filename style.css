@@ -403,14 +403,21 @@ iframe {
 
 .email-link {
   text-decoration: underline;
-  color: #000000;
+  color: #FFFFFF;
   font-weight: bold;
   cursor: pointer;
-  transition: color 0.3s ease;
+  transition: color 0.2s ease;
+  font-size: 2rem;
 }
 
 .email-link:hover {
-  color: #ff69b4;
+  color: #FF1569;
+}
+
+@media (hover: none) {
+  .email-link:hover {
+    color: inherit;
+  }
 }
 
 .floating-buttons {
