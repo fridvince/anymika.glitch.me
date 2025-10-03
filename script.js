@@ -146,8 +146,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function initializeLeeks() {
     const maxLeeks = 4;
     const leekImages = [
-      "https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/leek1.svg?v=1743703441842",
-      "https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/leek2.svg?v=1743703444770",
+      "assets/games/leek1.svg",
+      "assets/games/leek2.svg",
     ];
 
     function createFlyingLeek() {
