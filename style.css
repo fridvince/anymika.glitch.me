@@ -503,9 +503,7 @@ iframe {
     transform: translate(-50%, -50%);
     width: 200px;
     height: 200px;
-    background-image: url(
-      'https://cdn.glitch.global/795a55c1-54a0-4877-b64d-5c6da7b4b0c7/heart.svg?v=1743703623784'
-    );
+    background-image: url('assets/games/heart.svg');
     background-size: cover;
     opacity: 1;
     z-index: 1200;
