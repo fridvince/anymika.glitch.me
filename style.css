@@ -401,6 +401,18 @@ iframe {
   }
 }
 
+.email-link {
+  text-decoration: underline;
+  color: #000000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.email-link:hover {
+  color: #ff69b4;
+}
+
 .floating-buttons {
   position: fixed;
   right: 20px;
