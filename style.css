@@ -116,6 +116,11 @@ body, html {
 
 .page-4 {
   background-color: #171614;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 1rem;
 
 }
 
@@ -407,7 +412,7 @@ iframe {
   font-weight: bold;
   cursor: pointer;
   transition: color 0.2s ease;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 4vw, 2.5rem); 
 }
 
 .email-link:hover {
