@@ -1,0 +1,4 @@
+Type: CNAME
+Host: www
+Value: anymika.netlify.app
+TTL: 3600
